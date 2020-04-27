@@ -4,6 +4,7 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from heapq import nsmallest
+from heapq import nlargest
 
 load_dotenv()
 
@@ -29,11 +30,11 @@ sheet = doc.worksheet(SHEET_NAME) #> <class 'gspread.models.Worksheet'>
 rows = sheet.get_all_records() #> <class 'list'>
 
 email = input("What is your email?  ")
-relevant_rows = []
+user_rows = []
 for row in rows:
     if email == row["email"]:
         name = row["firstname"] + " " + row["lastname"]
-        relevant_rows.append(row)
+        user_rows.append(row)
 
 dates = []
 courses = []
@@ -41,16 +42,24 @@ scores = []
 course_ratings = []
 slopes = []
 differentials = []
-num_scores = len(relevant_rows)
 
-for row in relevant_rows:
+for row in user_rows:
     dates.insert(0,row["date"])
-    courses.insert(0,row["course"])
-    scores.insert(0,row["score"])
-    course_ratings.insert(0,row["rating"])
-    slopes.insert(0,row["slope"])
-    differentials.insert(0,row["differential"])
+relevant_dates = nlargest(20, dates)
+relevant_dates.sort()
 
+for date in relevant_dates:
+    for row in user_rows:
+        if row["date"] == date:
+            courses.insert(0,row["course"])
+            scores.insert(0,row["score"])
+            course_ratings.insert(0,row["rating"])
+            slopes.insert(0,row["slope"])
+            differentials.insert(0,row["differential"])
+
+# CALCULATE HANDICAP
+
+num_scores = len(relevant_dates)
 if num_scores <= 5:
     x = 1
 elif num_scores <= 8:
