@@ -44,12 +44,12 @@ differentials = []
 num_scores = len(relevant_rows)
 
 for row in relevant_rows:
-    dates.append(row["date"])
-    courses.append(row["course"])
-    scores.append(row["score"])
-    course_ratings.append(row["rating"])
-    slopes.append(row["slope"])
-    differentials.append(row["differential"])
+    dates.insert(0,row["date"])
+    courses.insert(0,row["course"])
+    scores.insert(0,row["score"])
+    course_ratings.insert(0,row["rating"])
+    slopes.insert(0,row["slope"])
+    differentials.insert(0,row["differential"])
 
 if num_scores <= 5:
     x = 1
@@ -70,12 +70,23 @@ elif num_scores >= 20:
 
 relevant_differentials = nsmallest(x, differentials)
 index = (sum(relevant_differentials[:x])/x)
-handicap_index = round(index, 1)
+handicap_index = min(round(index, 1), 54.0)
+if handicap_index < 0:
+    handicap_index = "+" + str(handicap_index * -1)
+
+rounded_differentials = []
+for x in differentials:
+    rounded_differentials.append(round(x,1))
 
 print("-----------------")
 print(name.upper())
 print(handicap_index, "HANDCIAP INDEX")
 print("-----------------")
-print("Score     Date     Course Rating/Slope     Differential     Course")
+print("Score    Date          Course Rating/Slope    Differential    Course")
 for i in range(num_scores):
-    print(f'{scores[i]}        {dates[i]}      {course_ratings[i]}/{slopes[i]}                {round(differentials[i], 1)}              {courses[i]}')
+    if len(str(rounded_differentials[i])) > 3:
+        print(f'{scores[i]}       {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}            {courses[i]}')
+    elif len(str(scores[i])) > 2:
+        print(f'{scores[i]}      {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')        
+    else:
+        print(f'{scores[i]}       {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')
