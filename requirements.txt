@@ -4,3 +4,5 @@ oauth2client
 requests
 
 Flask # web app framework package
+
+gunicorn # heroku needs this to run our app on the server
