@@ -10,12 +10,17 @@ def index():
     #return "Welcome Home (TODO)"
     return render_template("home.html")
 
+@home_routes.route("/home")
+def home():
+    print("VISITED THE HOME PAGE")
+    #return "Welcome Home (TODO)"
+    return render_template("home.html")
 
-@home_routes.route("/about")
-def about():
-    print("VISITED THE ABOUT PAGE")
+@home_routes.route("/handicap")
+def handicap():
+    print("VISITED THE HANDICAP PAGE")
     #return "About Me (TODO)"
-    return render_template("about.html")
+    return render_template("handicap.html")
     
 
 @home_routes.route("/users/new")

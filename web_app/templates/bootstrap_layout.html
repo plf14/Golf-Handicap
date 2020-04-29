@@ -28,13 +28,13 @@
     <!-- see: https://jinja.palletsprojects.com/en/2.11.x/tricks/ -->
     <!-- see: https://getbootstrap.com/docs/4.0/components/navbar/ -->
     {% set nav_links = [
-    ('/about', 'about', 'About'),
-    ('/weather/form', 'weather_form', 'Get Forecast'),
+    ('/home', 'home', 'Home'),
+    ('/handicap', 'handicap', 'Calculate Handicap'),
     ('/users/new', 'new_user', 'Sign Up')
     ] -%}
     {% set active_page = active_page|default('index') -%}
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="/">My Dope Web App</a>
+    <a class="navbar-brand" href="/">Golf Handicap Master</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -65,8 +65,7 @@
     <!-- FOOTER -->
     <div id="footer">
         <hr>
-        &copy; Copyright 2019 Prof. MJ Rossetti |
-        <a href="https://github.com/prof-rossetti/">source</a>
+        *add footer if desired*
     </div>
     </div>
 
