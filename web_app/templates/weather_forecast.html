@@ -1,0 +1,18 @@
+{% extends "bootstrap_layout.html" %}
+
+{% block content %}
+
+    <h2>Weather Forecast for {{ results["city_name"].title() }}</h2>
+
+    <p>Zip Code: {{ zip_code }}</p>
+
+    <!-- TODO: consider using a table instead of a list -->
+    <!-- https://www.w3schools.com/html/html_tables.asp -->
+    <!-- https://getbootstrap.com/docs/4.0/content/tables/ -->
+    <ul>
+    {% for hourly in results["hourly_forecasts"] %}
+        <li>{{ hourly["timestamp"] }} | {{ hourly["temp"] }} | {{ hourly["conditions"].upper() }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
