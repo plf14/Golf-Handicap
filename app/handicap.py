@@ -48,6 +48,8 @@ for row in user_rows:
 relevant_dates = nlargest(20, dates)
 relevant_dates.sort()
 
+print(relevant_dates)
+
 for date in relevant_dates:
     for row in user_rows:
         if row["date"] == date:
@@ -87,6 +89,8 @@ rounded_differentials = []
 for x in differentials:
     rounded_differentials.append(round(x,1))
 
+relevant_dates.reverse()
+
 print("-----------------")
 print(name.upper())
 print(handicap_index, "HANDCIAP INDEX")
@@ -94,8 +98,8 @@ print("-----------------")
 print("Score    Date          Course Rating/Slope    Differential    Course")
 for i in range(num_scores):
     if len(str(rounded_differentials[i])) > 3:
-        print(f'{scores[i]}       {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}            {courses[i]}')
+        print(f'{scores[i]}       {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}            {courses[i]}')
     elif len(str(scores[i])) > 2:
-        print(f'{scores[i]}      {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')        
+        print(f'{scores[i]}      {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')        
     else:
-        print(f'{scores[i]}       {dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')
+        print(f'{scores[i]}       {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')
