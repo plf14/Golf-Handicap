@@ -28,9 +28,6 @@ rows = sheet.get_all_records() #> <class 'list'>
 
 # WRITE SHEET VALUES
 
-print(len(rows))
-next_id = len(rows) + 1
-
 email = input("Email: ")
 firstname = input("First Name: ")
 lastname = input("Last Name: ")
@@ -56,11 +53,3 @@ next_object = {
 next_row = list(next_object.values())
 next_row_number = len(rows) + 2
 response = sheet.insert_row(next_row, next_row_number)
-
-print("-----------------")
-print("NEW RECORD:")
-print(next_row)
-print("-----------------")
-print("RESPONSE:", response)
-print(type(response)) #> dict
-print(response) #> {'spreadsheetId': '___', 'updatedRange': '___', 'updatedRows': 1, 'updatedColumns': 5, 'updatedCells': 5}
