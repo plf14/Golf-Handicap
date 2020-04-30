@@ -130,3 +130,5 @@ dmypy.json
 
 #Google Authorization
 auth/spreadsheet_credentials.json
+
+.DS_Store
