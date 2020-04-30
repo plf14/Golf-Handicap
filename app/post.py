@@ -36,6 +36,7 @@ course = input("Course: ")
 score = eval(input("Score: "))
 rating = eval(input("Course Rating: "))
 slope = eval(input("Slope: "))
+
 differential = (score-rating)*(113/slope)
 
 next_object = {
