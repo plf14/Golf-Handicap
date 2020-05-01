@@ -5,12 +5,12 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from heapq import nsmallest
 from heapq import nlargest
+from app import APP_ENV
 
 load_dotenv()
 
 DOCUMENT_ID = os.environ.get("GOOGLE_SHEET_ID", "OOPS")
 SHEET_NAME = os.environ.get("SHEET_NAME", "Scores")
-email = input("What is your email?  ")
 
 def scores(email):
     # AUTHORIZATION
@@ -107,11 +107,16 @@ def scores(email):
 
     return result
 
-output = scores(email)
+if __name__ == "__main__":
 
-print("-----------------")
-print(output["name"])
-print("-----------------")
-print(output["headers"])
-for x in output["rounds"]:
-    print(x)
+    if APP_ENV == "development":
+        email = input("Email: ")
+        results = scores(email=email)
+
+    print("-----------------")
+    print(results["name"])
+    print(results["handicap_index"])
+    print("-----------------")
+    print(results["headers"])
+    for x in results["rounds"]:
+        print(x)

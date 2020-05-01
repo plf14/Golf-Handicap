@@ -2,6 +2,13 @@ from flask import Blueprint, render_template, request
 
 from app.handicap import scores
 
+from dotenv import load_dotenv
+import os
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
+from heapq import nsmallest
+from heapq import nlargest
+
 golf_routes = Blueprint("golf_routes", __name__)
 
 @golf_routes.route("/handicap/form")
