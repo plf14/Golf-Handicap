@@ -5,12 +5,12 @@ from app.handicap import scores
 golf_routes = Blueprint("golf_routes", __name__)
 
 @golf_routes.route("/handicap/form")
-def weather_form():
+def handicap_form():
     print("VISITED THE WEATHER FORM...")
     return render_template("handicap_form.html")
 
 @golf_routes.route("/handicap/results", methods=["GET", "POST"])
-def weather_forecast():
+def handicap_result():
     print("GENERATING A WEATHER FORECAST...")
 
     if request.method == "POST":
