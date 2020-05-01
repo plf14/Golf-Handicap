@@ -1,17 +1,19 @@
 {% extends "bootstrap_layout.html" %}
-
-{% set active_page = "handicapt" %}
+{% set active_page = "handicap" %}
 
 {% block content %}
 
-    <h1>Enter Information Below</h1>
+    <h2>Calulate Handicap</h2>
 
-    <p>Hi current user. Please enter the following info so that we can calculate your scores</p>
+    <p>Enter your email to recieve your handicap</p>
 
-    <ul>
-        <li>information pt 1</li>
-        <li>information pt 2</li>
-        <li>information pt 3, etc.</li>
-    </ul>
-    
+    <form action="/handicap/scores" method="POST">
+
+        <label>Email:</label>
+        <input type="text" name="email" placeholder="example@gmail.com" value="example@gmail.com">
+        <br>
+
+        <button>Submit</button>
+    </form>
+
 {% endblock %}
