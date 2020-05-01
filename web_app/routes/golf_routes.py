@@ -21,7 +21,7 @@ def handicap_result():
     print("GENERATING A WEATHER FORECAST...")
 
     if request.method == "POST":
-        print("FORM DATA:", dict(request.form)) #> {'zip_code': '20057'}
+        print("FORM DATA:", dict(request.form))
         email = request.form["email"]
     elif request.method == "GET":
         print("URL PARAMS:", dict(request.args))
