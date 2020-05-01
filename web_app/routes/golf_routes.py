@@ -29,4 +29,6 @@ def handicap_result():
 
     results = scores(email)
     print(results.keys())
-    return render_template("handicap_result.html", email=email, results=results)
+    return render_template("handicap_result.html", email=email, results=results) 
+
+    
