@@ -1,0 +1,20 @@
+{% extends "bootstrap_layout.html" %}
+
+{% block content %}
+
+    <h2>{{ results["name"] }}</h2>
+
+    <p>{{ results["handicap_index"] }}</p>
+    <p>{{ results["headers"] }}</p>
+
+    <!-- TODO: consider using a table instead of a list -->
+    <!-- https://www.w3schools.com/html/html_tables.asp -->
+    <!-- https://getbootstrap.com/docs/4.0/content/tables/ -->
+    
+    <ul>
+    {% for x in results["rounds"] %}
+        <li>{{ x }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}

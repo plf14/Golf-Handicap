@@ -16,13 +16,6 @@ def home():
     #return "Welcome Home (TODO)"
     return render_template("home.html")
 
-@home_routes.route("/handicap")
-def handicap():
-    print("VISITED THE HANDICAP PAGE")
-    #return "About Me (TODO)"
-    return render_template("handicap.html")
-    
-
 @home_routes.route("/users/new")
 def new_user():
     print("VISITED THE REGISTRATION PAGE")
