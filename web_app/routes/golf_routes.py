@@ -2,12 +2,12 @@ from flask import Blueprint, render_template, request
 
 from app.handicap import scores
 
-weather_routes = Blueprint("weather_routes", __name__)
+golf_routes = Blueprint("golf_routes", __name__)
 
 @golf_routes.route("/handicap/form")
 def weather_form():
     print("VISITED THE WEATHER FORM...")
-    return render_template("handicap.html")
+    return render_template("handicap_form.html")
 
 @golf_routes.route("/handicap/results", methods=["GET", "POST"])
 def weather_forecast():
