@@ -13,12 +13,12 @@ golf_routes = Blueprint("golf_routes", __name__)
 
 @golf_routes.route("/handicap/form")
 def handicap_form():
-    print("VISITED THE WEATHER FORM...")
+    print("VISITED THE HANDICAP FORM...")
     return render_template("handicap_form.html")
 
 @golf_routes.route("/handicap/results", methods=["GET", "POST"])
 def handicap_result():
-    print("GENERATING A WEATHER FORECAST...")
+    print("CALCULATING A HANDICAP...")
 
     if request.method == "POST":
         print("FORM DATA:", dict(request.form))

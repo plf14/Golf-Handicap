@@ -3,26 +3,29 @@ from dotenv import load_dotenv
 import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
+import json
 from heapq import nsmallest
 from heapq import nlargest
 from app import APP_ENV
 
-load_dotenv()
 
-DOCUMENT_ID = os.environ.get("GOOGLE_SHEET_ID", "OOPS")
-SHEET_NAME = os.environ.get("SHEET_NAME", "Scores")
 
 def scores(email):
     # AUTHORIZATION
-
-    CREDENTIALS_FILEPATH = os.path.join(os.path.dirname(__file__), "..", "auth", "spreadsheet_credentials.json")
 
     AUTH_SCOPE = [
         "https://www.googleapis.com/auth/spreadsheets", #> Allows read/write access to the user's sheets and their properties.
         "https://www.googleapis.com/auth/drive.file" #> Per-file access to files created or opened by the app.
     ]
 
-    credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILEPATH, AUTH_SCOPE)
+    load_dotenv()
+
+    DOCUMENT_ID = os.environ.get("GOOGLE_SHEET_ID", "OOPS")
+    SHEET_NAME = os.environ.get("SHEET_NAME", "Scores")
+    json_creds = os.getenv("GOOGLE_CREDENTIALS")
+    creds_dict = json.loads(json_creds)
+    creds_dict["private_key"] = creds_dict["private_key"].replace("\\\\n", "\n")
+    credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, AUTH_SCOPE)
 
     # READ SHEET VALUES
 
