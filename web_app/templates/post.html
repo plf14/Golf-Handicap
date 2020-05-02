@@ -1,0 +1,57 @@
+{% extends "bootstrap_layout.html" %}
+{% set active_page = "post" %}
+
+{% block content %}
+
+    <h2>Post Score</h2>
+
+    <p>Enter details from a round for it to be included in your handicap calculation</p>
+
+    <form action="/post/done" method="POST">
+
+        <label>Email Address:</label>
+        <input type="text" name="email_address" placeholder="me@example.com" value="me@example.com">
+        <br>
+
+        <label>First Name:</label>
+        <input type="text" name="first_name">
+        <br>
+
+        <label>Last Name:</label>
+        <input type="text" name="last_name">
+        <br>
+
+
+        <label>Date:</label>
+        <input type="text" name="date" placeholder="YYYY-MM-DD" value="YYYY-MM-DD">
+        <br>
+   
+
+        <label>Golf Course:</label>
+        <input type="text" name="course" placeholder="course" value="Pebble Beach Golf Links">
+        <!--select name="golf_course">
+            <option value="Firethorn Golf Course" selected="true">Firethorn Golf Course</option>
+            <option value="xyz">xyz</option>
+            <option value="abc">abc</option>
+            <option value="123">123</option>
+        </select-->
+        <br>
+
+        <label>Score:</label>
+        <input type="score" name="score">
+        <br>  
+        
+        <label>*Course Rating:</label>
+        <input type="rating" name="rating" placeholder="rating" value="i.e. 75.7">
+        <br>    
+
+        <label>*Slope:</label>
+        <input type="slope" name="slope" placeholder="slope" value="i.e. 147">
+        <br>    
+
+        <h6>
+        *<a href="https://ncrdb.usga.org/">Click here</a> to look up the Course Rating and Slope</h6>
+        <br>
+        <button>Submit</button>
+    </form>
+{% endblock %}

@@ -8,9 +8,8 @@ from heapq import nsmallest
 from heapq import nlargest
 from app import APP_ENV
 
-
-
 def scores(email):
+
     # AUTHORIZATION
 
     AUTH_SCOPE = [
@@ -109,7 +108,7 @@ if __name__ == "__main__":
 
     if APP_ENV == "development":
         email = input("Email: ")
-        results = scores(email=email)
+        results = scores(email)
 
     print("-----------------")
     print(results["name"])
