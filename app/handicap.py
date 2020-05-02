@@ -8,9 +8,8 @@ from heapq import nsmallest
 from heapq import nlargest
 from app import APP_ENV
 
-
-
 def scores(email):
+
     # AUTHORIZATION
 
     AUTH_SCOPE = [
@@ -95,18 +94,13 @@ def scores(email):
 
     result = {
         "name": name.upper(),
-        "handicap_index": f'{handicap_index} HANDCIAP INDEX',
-        "headers": "Score    Date          Course Rating/Slope    Differential    Course",
-        "rounds": []
+        "handicap_index": f'{handicap_index} HANDICAP INDEX',
+        "data": [["Score", "Date", "Course Rating", "/", "Slope", "Differential", "Course"]]
     }
 
     for i in range(num_scores):
-        if len(str(rounded_differentials[i])) > 3:
-            result["rounds"].append(f'{scores[i]}       {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}            {courses[i]}')
-        elif len(str(scores[i])) > 2:
-            result["rounds"].append(f'{scores[i]}      {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')        
-        else:
-            result["rounds"].append(f'{scores[i]}       {relevant_dates[i]}    {course_ratings[i]}/{slopes[i]}               {rounded_differentials[i]}             {courses[i]}')
+        result["data"].append([scores[i],relevant_dates[i],course_ratings[i],"/",slopes[i],rounded_differentials[i],courses[i]])
+ 
 
     return result
 
@@ -114,12 +108,11 @@ if __name__ == "__main__":
 
     if APP_ENV == "development":
         email = input("Email: ")
-        results = scores(email=email)
+        results = scores(email)
 
     print("-----------------")
     print(results["name"])
     print(results["handicap_index"])
     print("-----------------")
-    print(results["headers"])
-    for x in results["rounds"]:
-        print(x)
+    for row in results["data"]:
+        print(row)
