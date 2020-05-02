@@ -3,6 +3,13 @@
 
 {% block content %}
     <br>
+
+    <style>
+        ::placeholder {
+          color: gray;
+        }
+    </style>
+
     <h2>Post Score</h2>
 
     <p>Enter details from a round for it to be included in your handicap calculation</p>
@@ -10,7 +17,7 @@
     <form action="/post/done" method="POST" >
 
         <label>Email Address:</label>
-        <input type="text" name="email_address" style="color:#A9A9A9" placeholder="me@example.com" value="me@example.com">
+        <input type="text" name="email_address" placeholder="me@example.com">
         <br>
 
         <label>First Name:</label>
@@ -23,12 +30,12 @@
 
 
         <label>Date:</label>
-        <input type="text" name="date" style="color:#A9A9A9" placeholder="YYYY-MM-DD" value="YYYY-MM-DD">
+        <input type="text" name="date"  placeholder="YYYY-MM-DD" >
         <br>
    
 
         <label>Golf Course:</label>
-        <input type="text" name="course" style="color:#A9A9A9" placeholder="course" value="Pebble Beach Golf Links">
+        <input type="text" name="course" placeholder="course">
         <!--select name="golf_course">
             <option value="Firethorn Golf Course" selected="true">Firethorn Golf Course</option>
             <option value="xyz">xyz</option>
@@ -42,11 +49,11 @@
         <br>  
         
         <label>*Course Rating:</label>
-        <input type="rating" name="rating" style="color:#A9A9A9" placeholder="rating" value="i.e. 75.7">
+        <input type="rating" name="rating" placeholder="rating">
         <br>    
 
         <label>*Slope:</label>
-        <input type="slope" name="slope" style="color:#A9A9A9" placeholder="slope" value="i.e. 147">
+        <input type="slope" name="slope" placeholder="slope">
         <br>    
 
         <h6>
