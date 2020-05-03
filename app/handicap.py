@@ -108,7 +108,7 @@ if __name__ == "__main__":
 
     if APP_ENV == "development":
         email = input("Email: ")
-        results = scores(email)
+        results = scores(email.lower())
 
     print("-----------------")
     print(results["name"])
