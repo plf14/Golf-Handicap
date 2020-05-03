@@ -30,7 +30,7 @@
     {% set nav_links = [
     ('/home', 'home', 'Home'),
     ('/about', 'about', 'Our Team'),
-    ('/handicap/form', 'handicap_form', 'Calculate Handicap'),
+    ('/handicap/form', 'handicap_form', 'View Handicap'),
     ('/post', 'post', 'Post Score')
     ] -%}
     {% set active_page = active_page|default('index') -%}
@@ -66,7 +66,8 @@
     <!-- FOOTER -->
     <div id="footer">
         <hr>
-        &copy; 2020 Everett Foster Zeolla
+        &copy; 2020 Everett Foster Zeolla |
+        <a target="_blank" href="https://github.com/plf14/Golf-Handicap/blob/master/LICENSE">source</a>
     </div>
     </div>
 
