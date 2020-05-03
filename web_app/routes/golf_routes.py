@@ -23,10 +23,10 @@ def handicap_result():
 
     if request.method == "POST":
         print("FORM DATA:", dict(request.form))
-        email = request.form["email"]
+        email = request.form["email"].lower()
     elif request.method == "GET":
         print("URL PARAMS:", dict(request.args))
-        email = request.args["email"]
+        email = request.args["email"].lower()
 
     results = scores(email)
     print(results.keys())
@@ -48,7 +48,7 @@ def create_user():
     user = dict(request.form)
     differential = (eval(user["score"])-eval(user["rating"]))*(113/eval(user["slope"]))
     post_score(user["email_address"], user["first_name"], user["last_name"], user["date"], user["course"], user["score"], user["rating"], user["slope"], differential)
-    email=user["email_address"]
+    email=user["email_address"].lower()
     results = scores(email)
     flash(f"Your score of {user['score']} at {user['course']} on {user['date']} was entered successfully!", "success") #success = green color alert
     return render_template("handicap_result.html", email=email, results=results)
