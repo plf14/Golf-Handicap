@@ -20,20 +20,21 @@ def handicap_form():
 @golf_routes.route("/handicap/results", methods=["GET", "POST"])
 def handicap_result():
     print("CALCULATING A HANDICAP...")
+    try:
+        if request.method == "POST":
+            print("FORM DATA:", dict(request.form))
+            email = request.form["email"].lower()
+        elif request.method == "GET":
+            print("URL PARAMS:", dict(request.args))
+            email = request.args["email"].lower()
 
-    if request.method == "POST":
-        print("FORM DATA:", dict(request.form))
-        email = request.form["email"].lower()
-    elif request.method == "GET":
-        print("URL PARAMS:", dict(request.args))
-        email = request.args["email"].lower()
-
-    results = scores(email)
-    print(results.keys())
-    return render_template("handicap_result.html", email=email, results=results) 
-
-    
-    return render_template("handicap_result.html", email=email, results=results)
+        results = scores(email)
+        print(results.keys())
+        return render_template("handicap_result.html", email=email, results=results)
+    except:
+        email = request.form["email"]
+        flash(f"Oops! Looks like there are no scores associated with {email}! Please try again!", "danger")
+        return render_template("handicap_form.html")
 
 @golf_routes.route("/post")
 def new_user():
