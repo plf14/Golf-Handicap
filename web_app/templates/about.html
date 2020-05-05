@@ -2,7 +2,7 @@
 {% set active_page = "about" %}
 
 {% block content %}
-    <br>
+    <!-- <br>
     <h1>Our Team</h1>
     <table style="width:100%">
         <tr style="text-align:center">
@@ -25,6 +25,133 @@
             <th >studying OPIM, CS, and Economics</th>
             <th >studying OPIM, Marketing, CS, and Math</th>
         </tr>
-    </table>
+    </table> -->
+
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        html {
+          box-sizing: border-box;
+        }
+        
+        *, *:before, *:after {
+          box-sizing: inherit;
+        }
+        
+        .column {
+          float: left;
+          width: 33.33%;
+          margin-bottom: 16px;
+          padding: 0 8px;
+        }
+        
+        @media screen and (max-width: 650px) {
+          .column {
+            width: 100%;
+            display: block;
+          }
+        }
+        
+        .card {
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+          padding: 0 16px;
+        }
+        
+        .container::after, .row::after {
+          content: "";
+          clear: both;
+          display: table;
+        }
+        
+        .title {
+          color: grey;
+        }
+        
+        .button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #211F1F;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+        }
+
+        .button2 {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 8px;
+          color: white;
+          background-color: #0e76a8;
+          text-align: center;
+          cursor: pointer;
+          width: 100%;
+        }
+        
+        .button:hover {
+          background-color: #555;
+        }
+        .button2:hover {
+          background-color: #4299c2;
+        }
+        </style>
+        </head>
+        <br>
+        <h2>Meet the Team</h2>
+        <br>
+        <div class="row">
+        <div class="column">
+            <div class="card">
+            <img src="https://media-exp1.licdn.com/dms/image/C5603AQHSpRI91W0ocw/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=b2D7cDkIKGFv6i4kEzxqlOZSpiVi_S4Iar4a8Cfn3ag" alt="Will" style="width:100%">
+            <div class="container">
+                <h2>Will Everett</h2>
+                <p class="title">Developer</p>
+                <p>Junior at Georgetown University studying OPIM, Finance, & CS.</p>
+                <p><a href="mailto:wae10@georgetown.edu">wae10@georgetown.edu</a>
+                <p><button class="button"><a style = color:white; target="_blank" href="https://github.com/wae10">GitHub</a></button> </p>
+                <p><button class="button2"><a style = color:white; target="_blank" href="https://www.linkedin.com/in/william-e-bbb94013b/">LinkedIn</a></button> </p>
+              </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="card">
+                <img src="https://media-exp1.licdn.com/dms/image/C4E03AQGzQMX-O_R97w/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=FBP1JbnHmMCzm_2tABz2VmujUtYnEHqyqJnJTHgCDfc" alt="Patrick" style="width:100%">
+            <div class="container">
+                <h2>Patrick Foster</h2>
+                <p class="title">Developer</p>
+                <p>Junior at Georgetown University studying OPIM, CS, & Economics.</p>
+                <p><a href="mailto:plf14@georgetown.edu">plf14@georgetown.edu</a>
+                <p><button class="button"><a style = color:white; target="_blank" href="https://github.com/plf14">GitHub</a></button> </p>
+                <p><button class="button2"><a style = color:white; target="_blank" href="https://www.linkedin.com/in/patricklfoster6/">LinkedIn</a></button> </p>
+              </div>
+            </div>
+        </div>
+        
+        <div class="column">
+            <div class="card">
+            <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHjkzJwvke1_A/profile-displayphoto-shrink_200_200/0?e=1594252800&v=beta&t=OnC1J5j-csT-x0BZS5Vfby0_isBFBVF_jqxtZl7OTx8" alt="Francesco" style="width:100%">
+            <div class="container">
+                <h2>Francesco Zeolla</h2>
+                <p class="title">Developer</p>
+                <p>Junior at Georgetown University studying OPIM, Marketing, CS, & Math.</p>
+                <p><a href="mailto:fdz2@georgetown.edu">fdz2@georgetown.edu</a>
+                <p><button class="button"><a style = color:white; target="_blank" href="https://github.com/francesco55">GitHub</a></button> </p>
+                <p><button class="button2"><a style = color:white; target="_blank" href="https://www.linkedin.com/in/francesco-zeolla-758b461a8/">LinkedIn</a></button> </p>
+              </div>
+            </div>
+        </div>
+        </div>
+
+
+
+ 
     
 {% endblock %}

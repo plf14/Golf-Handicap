@@ -33,7 +33,7 @@ def post_score(email, firstname, lastname, date, course, score, rating, slope, d
     # WRITE SHEET VALUES
 
     next_object = {
-        "email": email,
+        "email": email.lower(),
         "firstname": firstname,
         "lastname": lastname,
         "date": date,
@@ -62,4 +62,4 @@ if __name__ == "__main__":
 
         differential = (score-rating)*(113/slope)
 
-        post_score(email,firstname, lastname, date, course, score, rating, slope, differential)
+        post_score(email.lower(), firstname, lastname, date, course, score, rating, slope, differential)

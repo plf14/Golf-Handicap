@@ -2,17 +2,26 @@
 {% set active_page = "handicap_form" %}
 
 {% block content %}
-    <br>
-    <h2>Calculate Handicap</h2>
 
-    <p>Enter your email to recieve your handicap</p>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <br>
+
+    <style>
+        ::placeholder {
+          color: gray;
+        }
+    </style>
+
+    <h2>View Handicap</h2>
+
+    <p>Enter the email your scores are associated with to view your handicap</p>
 
     <form action="/handicap/results" method="POST">
 
         <label>Email:</label>
-        <input type="text" name="email" style="color:#A9A9A9" placeholder="example@gmail.com" value="example@gmail.com">
+        <input type="text" name="email" placeholder="me@example.com">
         <br>
-
+        <br>
         <button>Submit</button>
     </form>
 
