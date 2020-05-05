@@ -2,12 +2,19 @@
 
 {% block content %}
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      tr:nth-child(even) {
+        background-color: #C0C0C0;
+      }
+    </style>
+    <br>
     <h2>{{ results["name"] }}</h2>
     <h2>{{ results["handicap_index"] }}</h2>
-
+    <br>
     <table style="width:100%">
         {% for row in results["data"] %}
-        <tr style="text-align:center">
+        <tr style="text-align:left">
           <th>{{row[0]}}</th>
           <th>{{row[1]}}</th> 
           <th>{{row[2]}}</th>

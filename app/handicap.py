@@ -95,11 +95,12 @@ def scores(email):
     result = {
         "name": name.upper(),
         "handicap_index": f'{handicap_index} HANDICAP INDEX',
-        "data": [["Score", "Date", "Course Rating", "/", "Slope", "Differential", "Course"]]
+        "data": [["Score", "Date", "Course Rating / Slope", "Differential", "Course"]]
     }
 
     for i in range(num_scores):
-        result["data"].append([scores[i],relevant_dates[i],course_ratings[i],"/",slopes[i],rounded_differentials[i],courses[i]])
+        course_and_slope = f"{course_ratings[i]} / {slopes[i]}"
+        result["data"].append([scores[i],relevant_dates[i],course_and_slope,rounded_differentials[i],courses[i]])
  
 
     return result
