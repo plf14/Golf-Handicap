@@ -65,9 +65,9 @@ def create_user():
 
     if user["email_address"] and user["first_name"] and user["last_name"] and user["date"] and user["course"] and user["score"] and user["rating"] and user["slope"]:
         differential = (eval(user["score"])-eval(user["rating"]))*(113/eval(user["slope"]))
+        post_score(user["email_address"], user["first_name"], user["last_name"], user["date"], user["course"], user["score"], user["rating"], user["slope"], differential)
         email=user["email_address"].lower()
         results = scores(email)
-        post_score(user["email_address"], user["first_name"], user["last_name"], user["date"], user["course"], user["score"], user["rating"], user["slope"], differential)
         flash(f"Your score of {user['score']} at {user['course']} on {user['date']} was entered successfully!", "success") #success = green color alert
         return render_template("handicap_result.html", email=email, results=results)
         
