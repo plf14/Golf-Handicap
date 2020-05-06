@@ -5,3 +5,4 @@ requests
 
 Flask # web app framework package
 gunicorn
+pytest
