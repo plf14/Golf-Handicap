@@ -6,7 +6,10 @@ import json
 from app import APP_ENV
 
 def post_score(email, firstname, lastname, date, course, score, rating, slope, differential):
-
+    """
+    This function takes in multiple arguments, all of which are inputs provided by the golfer.
+    This function writes the inputted data into a google sheet which universally holds user data.
+    """
     # AUTHORIZATION
 
     AUTH_SCOPE = [
@@ -48,6 +51,14 @@ def post_score(email, firstname, lastname, date, course, score, rating, slope, d
     next_row_number = len(rows) + 2
     response = sheet.insert_row(next_row, next_row_number)
 
+def calc_differential(score, rating, slope):
+    """
+    This function takes three float arguments: a golfer's score, rating, and slope.
+    This function returns the golfer's differential in that round.
+    """
+    differential = (score-rating)*(113/slope)
+    return differential 
+
 if __name__ == "__main__":
 
     if APP_ENV == "development":
@@ -60,6 +71,6 @@ if __name__ == "__main__":
         rating = eval(input("Course Rating: "))
         slope = eval(input("Slope: "))
 
-        differential = (score-rating)*(113/slope)
+        differential = calc_differential(score, rating, slope)
 
         post_score(email.lower(), firstname, lastname, date, course, score, rating, slope, differential)
