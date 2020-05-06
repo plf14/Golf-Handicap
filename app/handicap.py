@@ -8,7 +8,42 @@ from heapq import nsmallest
 from heapq import nlargest
 from app import APP_ENV
 
+def calc_handicap(differentials, num_scores):
+    """
+    This function takes in a list of differentials and the total number of scores as an argument.
+    This function returns the golfer's handicap, accounting for formatting with a negative handicap ('+#')
+    """
+
+    if num_scores <= 5:
+        x = 1
+    elif num_scores <= 8:
+        x =2
+    elif num_scores <= 11:
+        x = 3
+    elif num_scores <= 14:
+        x = 4
+    elif num_scores <= 16:
+        x = 5
+    elif num_scores <= 18:
+        x = 6
+    elif num_scores == 19:
+        x =7
+    elif num_scores >= 20:
+        x = 8
+
+    relevant_differentials = nsmallest(x, differentials)
+    index = (sum(relevant_differentials[:x])/x)
+    handicap_index = min(round(index, 1), 54.0)
+    if handicap_index < 0:
+        handicap_index = "+" + str(handicap_index * -1)
+    
+    return handicap_index
+
 def scores(email):
+    """
+    This function takes a user's email as an argument.
+    It loads in user data, 
+    """
 
     # AUTHORIZATION
 
@@ -63,29 +98,7 @@ def scores(email):
     # CALCULATE HANDICAP
 
     num_scores = len(relevant_dates)
-    if num_scores <= 5:
-        x = 1
-    elif num_scores <= 8:
-        x =2
-    elif num_scores <= 11:
-        x = 3
-    elif num_scores <= 14:
-        x = 4
-    elif num_scores <= 16:
-        x = 5
-    elif num_scores <= 18:
-        x = 6
-    elif num_scores == 19:
-        x =7
-    elif num_scores >= 20:
-        x = 8
-
-    relevant_differentials = nsmallest(x, differentials)
-    index = (sum(relevant_differentials[:x])/x)
-    handicap_index = min(round(index, 1), 54.0)
-    if handicap_index < 0:
-        handicap_index = "+" + str(handicap_index * -1)
-
+   
     rounded_differentials = []
     for x in differentials:
         rounded_differentials.append(round(x,1))
@@ -94,7 +107,7 @@ def scores(email):
 
     result = {
         "name": name.upper(),
-        "handicap_index": f'{handicap_index} HANDICAP INDEX',
+        "handicap_index": f'{calc_handicap(differentials, num_scores)} HANDICAP INDEX',
         "data": [["Score", "Date", "Course Rating / Slope", "Differential", "Course"]]
     }
 

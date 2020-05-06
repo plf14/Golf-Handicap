@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect
 
-from app.handicap import scores
-from app.post import post_score
+from app.handicap import scores, calc_handicap
+from app.post import post_score, calc_differential
 
 from dotenv import load_dotenv
 import os
