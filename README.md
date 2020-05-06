@@ -27,7 +27,7 @@ Setup a virtual enviorment called something like "golf-env" and from within it i
 conda create -n golf-env python=3.7 # (first time only)
 conda activate golf-env
 
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 ### .env Setup
 
