@@ -41,8 +41,8 @@ def calc_handicap(differentials, num_scores):
 
 def scores(email):
     """
-    This function takes a user's email as an argument.
-    It loads in user data, 
+    This function takes a user's email as an argument andreads in user data from the google sheet.
+    This function returns a dictionary of relevant outputs:scores, differentials, and the user's current handicap.
     """
 
     # AUTHORIZATION
