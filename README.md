@@ -40,8 +40,8 @@ Now that you have your credentials, use your text editor or the command-line to 
 ```sh
 APP_ENV="development" # or set to "production" on Heroku server
 
-GOOGLE_SHEET_ID = "1sDAv3ivf8gCyjHVjHf-wRq7Hn8ardK_QQPzg9Er0PBI"
-SHEET_NAME = "Scores"
+GOOGLE_SHEET_ID = "*Unique Identifer at end of the URL*"
+SHEET_NAME = "*Sheet Name*"
 
 GOOGLE_CREDENTIALS='{*Contents of the credentials.json file*}'
 ```
